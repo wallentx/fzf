@@ -1092,7 +1092,7 @@ func parseOptions(opts *Options, allArgs []string) {
 	}
 }
 
-func postProcessOptions(opts *Options) {
+func PostProcessOptions(opts *Options) {
 	// Default actions for CTRL-N / CTRL-P when --history is set
 	if opts.History != nil {
 		if _, prs := opts.Keymap[tui.CtrlP]; !prs {
@@ -1138,6 +1138,6 @@ func ParseOptions() *Options {
 	// Options from command-line arguments
 	parseOptions(opts, os.Args[1:])
 
-	postProcessOptions(opts)
+	PostProcessOptions(opts)
 	return opts
 }

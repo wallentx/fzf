@@ -98,7 +98,7 @@ func TestIrrelevantNth(t *testing.T) {
 		opts := DefaultOptions()
 		words := []string{"--nth", "..", "-x"}
 		parseOptions(opts, words)
-		postProcessOptions(opts)
+		PostProcessOptions(opts)
 		if len(opts.Nth) != 0 {
 			t.Errorf("nth should be empty: %s", opts.Nth)
 		}
@@ -107,7 +107,7 @@ func TestIrrelevantNth(t *testing.T) {
 		{
 			opts := DefaultOptions()
 			parseOptions(opts, words)
-			postProcessOptions(opts)
+			PostProcessOptions(opts)
 			if len(opts.Nth) != 0 {
 				t.Errorf("nth should be empty: %s", opts.Nth)
 			}
@@ -116,7 +116,7 @@ func TestIrrelevantNth(t *testing.T) {
 			opts := DefaultOptions()
 			words = append(words, "-x")
 			parseOptions(opts, words)
-			postProcessOptions(opts)
+			PostProcessOptions(opts)
 			if len(opts.Nth) != 2 {
 				t.Errorf("nth should not be empty: %s", opts.Nth)
 			}
@@ -326,7 +326,7 @@ func TestDefaultCtrlNP(t *testing.T) {
 	check := func(words []string, key int, expected actionType) {
 		opts := DefaultOptions()
 		parseOptions(opts, words)
-		postProcessOptions(opts)
+		PostProcessOptions(opts)
 		if opts.Keymap[key] != expected {
 			t.Error()
 		}
@@ -353,7 +353,7 @@ func TestDefaultCtrlNP(t *testing.T) {
 func optsFor(words ...string) *Options {
 	opts := DefaultOptions()
 	parseOptions(opts, words)
-	postProcessOptions(opts)
+	PostProcessOptions(opts)
 	return opts
 }
 
