@@ -95,7 +95,7 @@ func TestSplitNth(t *testing.T) {
 
 func TestIrrelevantNth(t *testing.T) {
 	{
-		opts := defaultOptions()
+		opts := DefaultOptions()
 		words := []string{"--nth", "..", "-x"}
 		parseOptions(opts, words)
 		postProcessOptions(opts)
@@ -105,7 +105,7 @@ func TestIrrelevantNth(t *testing.T) {
 	}
 	for _, words := range [][]string{[]string{"--nth", "..,3", "+x"}, []string{"--nth", "3,1..", "+x"}, []string{"--nth", "..-1,1", "+x"}} {
 		{
-			opts := defaultOptions()
+			opts := DefaultOptions()
 			parseOptions(opts, words)
 			postProcessOptions(opts)
 			if len(opts.Nth) != 0 {
@@ -113,7 +113,7 @@ func TestIrrelevantNth(t *testing.T) {
 			}
 		}
 		{
-			opts := defaultOptions()
+			opts := DefaultOptions()
 			words = append(words, "-x")
 			parseOptions(opts, words)
 			postProcessOptions(opts)
@@ -324,7 +324,7 @@ func TestParseNilTheme(t *testing.T) {
 
 func TestDefaultCtrlNP(t *testing.T) {
 	check := func(words []string, key int, expected actionType) {
-		opts := defaultOptions()
+		opts := DefaultOptions()
 		parseOptions(opts, words)
 		postProcessOptions(opts)
 		if opts.Keymap[key] != expected {
@@ -351,7 +351,7 @@ func TestDefaultCtrlNP(t *testing.T) {
 }
 
 func optsFor(words ...string) *Options {
-	opts := defaultOptions()
+	opts := DefaultOptions()
 	parseOptions(opts, words)
 	postProcessOptions(opts)
 	return opts
