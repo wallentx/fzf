@@ -2,6 +2,7 @@ package fzf
 
 import (
 	"fmt"
+	"io"
 	"os"
 	"regexp"
 	"strconv"
@@ -173,6 +174,7 @@ type Options struct {
 	Margin      [4]sizeSpec
 	Tabstop     int
 	Version     bool
+	Input       io.Reader
 }
 
 func defaultOptions() *Options {

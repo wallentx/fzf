@@ -126,7 +126,7 @@ func Run(opts *Options) {
 	if !streamingFilter {
 		reader := Reader{func(data []byte) bool {
 			return chunkList.Push(data)
-		}, eventBox, opts.ReadZero}
+		}, eventBox, opts.ReadZero, opts.Input}
 		go reader.ReadSource()
 	}
 
@@ -169,7 +169,7 @@ func Run(opts *Options) {
 						}
 					}
 					return false
-				}, eventBox, opts.ReadZero}
+				}, eventBox, opts.ReadZero, opts.Input}
 			reader.ReadSource()
 		} else {
 			eventBox.Unwatch(EvtReadNew)
