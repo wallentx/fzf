@@ -13,11 +13,14 @@ type Reader struct {
 	pusher   func([]byte) bool
 	eventBox *util.EventBox
 	delimNil bool
+	input    io.Reader
 }
 
 // ReadSource reads data from the default command or from standard input
 func (r *Reader) ReadSource() {
-	if util.IsTty() {
+	if r.input != nil {
+		r.feed(r.input)
+	} else if util.IsTty() {
 		cmd := os.Getenv("FZF_DEFAULT_COMMAND")
 		if len(cmd) == 0 {
 			cmd = defaultCommand
